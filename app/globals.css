@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  --color-canvas: #f6f7fb;
+  --color-surface: #ffffff;
+  --color-sunken: #f0f2f8;
+  --color-ink: #0f1a3a;
+  --color-ink-2: #39436a;
+  --color-ink-3: #646d8e;
+  --color-line: #e3e6f0;
+  --color-line-strong: #c9cee0;
+  --color-accent: #4b3fe0;
+  --color-accent-strong: #3a2ec7;
+  --color-accent-soft: #eeecfd;
+  --color-accent-line: #c9c3f7;
+  --color-violet: #7a5af5;
+  --color-success: #0d7f49;
+  --color-success-soft: #e4f4eb;
+  --color-success-line: #9fd8b8;
+  --color-danger: #c8323a;
+  --color-danger-soft: #fcebec;
+  --color-danger-line: #f1b0b4;
+  --color-warn: #9a5b00;
+  --color-warn-soft: #fdf3e0;
+  --color-warn-line: #f0cf92;
+
+  --shadow-soft: 0 1px 2px rgb(15 26 58 / 0.04), 0 6px 20px -10px rgb(15 26 58 / 0.12);
+  --shadow-lift: 0 1px 2px rgb(15 26 58 / 0.05), 0 14px 32px -14px rgb(15 26 58 / 0.22);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  label[for] {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: 14px;
+    box-shadow: var(--shadow-soft);
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .hairline-grid {
+    background-image:
+      linear-gradient(to right, rgb(15 26 58 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(15 26 58 / 0.045) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+@keyframes slide {
+  0% { left: -35%; }
+  100% { left: 100%; }
+}
